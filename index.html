@@ -6,8 +6,8 @@
     <title>San Nicolás Jardín Infantil | Arica, Chile</title>
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts para tipografía profesional -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Combinación de tipografía infantil y profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -22,7 +22,7 @@
             background-color: #f8f9fa;
         }
 
-        /* Header y Navegación */
+        /* Header y Navegación (se mantiene profesional) */
         header {
             background: white;
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
@@ -70,7 +70,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #0984e3, #6c5ce7);
+            background: linear-gradient(135deg, #FF9A8B, #FF6B8B, #D16BA5);
             transition: width 0.3s ease;
         }
 
@@ -78,25 +78,117 @@
             width: 100%;
         }
 
-        /* Menú hamburguesa para móvil */
         .menu-toggle {
             display: none;
             font-size: 1.8rem;
-            color: #0984e3;
+            color: #FF6B8B;
             cursor: pointer;
         }
 
-        /* Hero Section */
-        .hero {
+        /* Hero Section (mantiene estilo infantil) */
+        #inicio {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(9,132,227,0.95), rgba(108,92,231,0.95)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,170.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom no-repeat;
-            background-size: cover;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
             padding: 0 1.5rem;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #6ec6ff, #b3e5fc);
+        }
+
+        #inicio::before {
+            content: "";
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140%;
+            height: 350px;
+            background: conic-gradient(
+                red, orange, yellow, green, blue, indigo, violet, red
+            );
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: girarArcoiris 20s linear infinite;
+        }
+
+        @keyframes girarArcoiris {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        #inicio::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 120px;
+            background: #4CAF50;
+        }
+
+        .sol {
+            position: absolute;
+            top: 60px;
+            right: 80px;
+            width: 100px;
+            height: 100px;
+            background: #FFD54F;
+            border-radius: 50%;
+            box-shadow: 0 0 40px #FFD54F;
+            animation: flotarSol 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes flotarSol {
+            from { transform: translateY(0); }
+            to { transform: translateY(-15px); }
+        }
+
+        .nube {
+            position: absolute;
+            width: 130px;
+            height: 60px;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 30px 10px 0 10px white, 60px 5px 0 5px white;
+            opacity: 0.9;
+            animation: moverNube 35s linear infinite;
+        }
+
+        .nube1 { top: 100px; left: -200px; }
+        .nube2 { top: 180px; animation-duration: 50s; left: -300px; }
+
+        @keyframes moverNube {
+            from { transform: translateX(0); }
+            to { transform: translateX(150vw); }
+        }
+
+        .burbuja {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            animation: subir 8s linear infinite;
+        }
+
+        .burbuja:nth-child(1) { left: 20%; animation-duration: 6s; }
+        .burbuja:nth-child(2) { left: 40%; animation-duration: 8s; }
+        .burbuja:nth-child(3) { left: 60%; animation-duration: 7s; }
+        .burbuja:nth-child(4) { left: 80%; animation-duration: 9s; }
+
+        @keyframes subir {
+            from { transform: translateY(0) scale(1); opacity: 1; }
+            to { transform: translateY(-600px) scale(1.5); opacity: 0; }
+        }
+
+        #inicio .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
         }
 
         .hero-content h2 {
@@ -128,7 +220,7 @@
             display: inline-block;
             padding: 1rem 2.5rem;
             background: white;
-            color: #0984e3;
+            color: #FF6B8B;
             text-decoration: none;
             font-weight: 600;
             border-radius: 50px;
@@ -152,7 +244,7 @@
             }
         }
 
-        /* Secciones */
+        /* Secciones generales */
         section {
             padding: 5rem 5%;
             max-width: 1400px;
@@ -176,7 +268,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(135deg, #0984e3, #6c5ce7);
+            background: linear-gradient(135deg, #FF9A8B, #FF6B8B, #D16BA5);
             border-radius: 2px;
         }
 
@@ -187,7 +279,7 @@
             padding: 3rem 2rem;
             margin-bottom: 3rem;
             text-align: center;
-            border: 1px solid rgba(9,132,227,0.2);
+            border: 1px solid rgba(255,107,139,0.2);
         }
 
         .consulta-telefonica h3 {
@@ -230,12 +322,12 @@
         }
 
         .btn-llamar {
-            background: #0984e3;
+            background: #FF6B8B;
             color: white;
         }
 
         .btn-llamar:hover {
-            background: #0873c4;
+            background: #e05575;
             transform: scale(1.05);
         }
 
@@ -260,7 +352,27 @@
             flex-wrap: wrap;
         }
 
-        /* Nosotros */
+        /* Nosotros - Título infantil */
+        #nosotros .section-title {
+            font-family: 'Comic Neue', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #f8b81f, #f18f2e, #e85d3a, #c94b9b, #5e4fa2, #2f9bc5, #3bb08b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            padding-bottom: 15px;
+            border-bottom: 4px dashed #f8b81f;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+            width: 100%;
+        }
+
+        #nosotros .section-title::after {
+            display: none; /* Ocultamos la línea por defecto */
+        }
+
         .nosotros-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -282,7 +394,7 @@
 
         .card i {
             font-size: 2.5rem;
-            background: linear-gradient(135deg, #0984e3, #6c5ce7);
+            background: linear-gradient(135deg, #FF9A8B, #FF6B8B, #D16BA5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
@@ -314,6 +426,9 @@
         .valores-list i {
             font-size: 1rem;
             margin-bottom: 0;
+            background: none;
+            -webkit-text-fill-color: #FF6B8B;
+            color: #FF6B8B;
         }
 
         /* Especialización */
@@ -325,12 +440,12 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            border-left: 5px solid #0984e3;
+            border-left: 5px solid #FF6B8B;
         }
 
         .especializacion-banner i {
             font-size: 2.5rem;
-            color: #0984e3;
+            color: #FF6B8B;
         }
 
         .especializacion-banner p {
@@ -359,7 +474,7 @@
 
         .nivel-img {
             height: 150px;
-            background: linear-gradient(135deg, #0984e3, #6c5ce7);
+            background: linear-gradient(135deg, #FF9A8B, #FF6B8B, #D16BA5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -399,11 +514,11 @@
         }
 
         .nivel-features i {
-            color: #0984e3;
+            color: #FF6B8B;
             font-size: 0.8rem;
         }
 
-        /* Galería - SOLO 3 IMÁGENES */
+        /* Galería */
         .galeria-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -488,7 +603,7 @@
         }
 
         .direccion-completa {
-            color: #0984e3;
+            color: #FF6B8B;
             font-weight: 500;
             margin-bottom: 1.5rem;
             font-size: 1rem;
@@ -511,7 +626,7 @@
         }
 
         .horario-item .hora {
-            color: #0984e3;
+            color: #FF6B8B;
             font-weight: 500;
         }
 
@@ -519,99 +634,153 @@
             color: #e17055;
         }
 
-        /* Contacto */
+        /* ===== CONTACTO PROFESIONAL ===== */
         .contacto-container {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
+            grid-template-columns: 1.2fr 1.8fr;
             gap: 2rem;
             background: white;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,107,139,0.1);
         }
 
         .contacto-info {
-            background: linear-gradient(135deg, #0984e3, #6c5ce7);
-            padding: 2rem;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            padding: 2.5rem;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contacto-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,107,139,0.1) 0%, transparent 70%);
+            z-index: 0;
         }
 
         .contacto-info h3 {
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contacto-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #FF6B8B;
+            border-radius: 3px;
         }
 
         .contacto-detalle {
             display: flex;
             gap: 1rem;
-            margin-bottom: 1.5rem;
-            align-items: center;
+            margin-bottom: 1.8rem;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
         }
 
         .contacto-detalle i {
             font-size: 1.3rem;
-            width: 25px;
+            width: 24px;
+            color: #FF6B8B;
+            margin-top: 3px;
         }
 
         .contacto-detalle p {
-            font-size: 0.95rem;
-            opacity: 0.9;
+            font-size: 1rem;
+            opacity: 0.95;
+            line-height: 1.6;
         }
 
         .contacto-detalle a {
             color: white;
             text-decoration: none;
+            border-bottom: 1px dotted rgba(255,255,255,0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        .contacto-detalle a:hover {
+            border-bottom-color: #FF6B8B;
         }
 
         .contacto-form {
-            padding: 2rem;
+            padding: 2.5rem;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            font-size: 0.95rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 0.9rem 1.2rem;
             border: 2px solid #e9ecef;
             border-radius: 12px;
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: #fafbfc;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #0984e3;
+            border-color: #FF6B8B;
+            background: white;
+            box-shadow: 0 5px 15px rgba(255,107,139,0.1);
         }
 
         .form-group textarea {
-            height: 120px;
+            height: 140px;
             resize: vertical;
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, #0984e3, #6c5ce7);
+            background: linear-gradient(135deg, #1e293b, #0f172a);
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 1.5rem;
             border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             width: 100%;
             font-size: 1rem;
+            letter-spacing: 0.5px;
         }
 
         .btn-submit:hover {
+            background: linear-gradient(135deg, #2d3a4f, #1a2538);
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
         }
 
         /* Footer */
         footer {
-            background: #1e272e;
+            background: #1e293b;
             color: white;
             padding: 2.5rem 5%;
             text-align: center;
@@ -631,12 +800,12 @@
         }
 
         .social-links a:hover {
-            color: #0984e3;
+            color: #FF6B8B;
         }
 
         footer p {
             font-size: 0.9rem;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         /* WhatsApp Flotante */
@@ -663,9 +832,8 @@
             transform: scale(1.1);
         }
 
-        /* ===== RESPONSIVE PARA MÓVIL ===== */
+        /* Responsive */
         @media screen and (max-width: 768px) {
-            /* Navegación */
             .menu-toggle {
                 display: block;
             }
@@ -697,180 +865,48 @@
                 padding: 0.8rem;
             }
 
-            /* Hero */
             .hero-content h2 {
                 font-size: 2.2rem;
             }
 
-            .hero-content p {
-                font-size: 1.1rem;
+            #nosotros .section-title {
+                font-size: 2.8rem;
             }
 
-            .hero-badge {
-                font-size: 0.9rem;
-                padding: 0.4rem 1rem;
-            }
-
-            .btn {
-                padding: 0.8rem 1.8rem;
-                font-size: 0.95rem;
-            }
-
-            /* Secciones */
-            section {
-                padding: 4rem 4%;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2rem;
-            }
-
-            /* Nosotros grid */
-            .nosotros-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .card {
-                padding: 1.5rem;
-            }
-
-            /* Especialización */
-            .especializacion-banner {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.8rem;
-                padding: 1.5rem;
-            }
-
-            .especializacion-banner i {
-                font-size: 2rem;
-            }
-
-            /* Niveles grid */
-            .niveles-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            /* Galería - 1 columna en móvil */
-            .galeria-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .galeria-item {
-                height: 220px;
-            }
-
-            .galeria-overlay {
-                transform: translateY(0);
-                background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-                padding: 1rem;
-            }
-
-            .galeria-overlay h3 {
-                font-size: 1rem;
-            }
-
-            .galeria-overlay p {
-                font-size: 0.8rem;
-            }
-
-            /* Ubicación */
-            .ubicacion-container {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .mapa {
-                height: 250px;
-            }
-
-            .info-ubicacion {
-                padding: 1.5rem;
-            }
-
-            .info-ubicacion h3 {
-                font-size: 1.5rem;
-            }
-
-            .horario-item {
-                font-size: 0.9rem;
-            }
-
-            /* Contacto */
+            .nosotros-grid,
+            .niveles-grid,
+            .galeria-grid,
             .contacto-container {
                 grid-template-columns: 1fr;
             }
 
             .contacto-info {
-                padding: 1.5rem;
-            }
-
-            .contacto-info h3 {
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
+                padding: 2rem;
             }
 
             .contacto-form {
-                padding: 1.5rem;
+                padding: 2rem;
             }
 
-            /* Botones teléfono */
             .telefono-buttons {
                 flex-direction: column;
-                gap: 0.8rem;
             }
 
             .btn-telefono {
                 width: 100%;
                 justify-content: center;
-                font-size: 1rem;
-                padding: 0.8rem 1.5rem;
-            }
-
-            .horario-atencion {
-                font-size: 0.85rem;
-            }
-
-            /* Footer */
-            footer {
-                padding: 2rem 4%;
-            }
-
-            .social-links {
-                gap: 1.2rem;
-            }
-
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.6rem;
-                bottom: 15px;
-                right: 15px;
             }
         }
 
-        /* Ajustes para tablets */
         @media screen and (min-width: 769px) and (max-width: 1024px) {
             .nosotros-grid,
-            .niveles-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
+            .niveles-grid,
             .galeria-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .ubicacion-container,
             .contacto-container {
                 grid-template-columns: 1fr;
-            }
-
-            .hero-content h2 {
-                font-size: 3rem;
             }
         }
     </style>
@@ -903,6 +939,14 @@
     <main>
         <!-- Hero Section -->
         <section id="inicio" class="hero">
+            <div class="sol"></div>
+            <div class="nube nube1"></div>
+            <div class="nube nube2"></div>
+            <div class="burbuja"></div>
+            <div class="burbuja"></div>
+            <div class="burbuja"></div>
+            <div class="burbuja"></div>
+            
             <div class="hero-content">
                 <div class="hero-badge">35 años formando con amor en Arica</div>
                 <h2>Jardín Infantil<br>San Nicolás</h2>
@@ -936,9 +980,10 @@
             </div>
         </section>
 
-        <!-- Nosotros -->
+        <!-- Nosotros (título infantil) -->
         <section id="nosotros">
             <h2 class="section-title">Sobre Nosotros</h2>
+            
             <div class="nosotros-grid">
                 <div class="card">
                     <i class="fas fa-history"></i>
@@ -954,11 +999,11 @@
                     <i class="fas fa-heart"></i>
                     <h3>Valores</h3>
                     <ul class="valores-list">
-                        <li><i class="fas fa-check-circle" style="color: #0984e3;"></i> Amor y dedicación</li>
-                        <li><i class="fas fa-check-circle" style="color: #0984e3;"></i> Inclusión y respeto</li>
-                        <li><i class="fas fa-check-circle" style="color: #0984e3;"></i> Desarrollo integral</li>
-                        <li><i class="fas fa-check-circle" style="color: #0984e3;"></i> Compromiso familiar</li>
-                        <li><i class="fas fa-check-circle" style="color: #0984e3;"></i> Excelencia educativa</li>
+                        <li><i class="fas fa-check-circle"></i> Amor y dedicación</li>
+                        <li><i class="fas fa-check-circle"></i> Inclusión y respeto</li>
+                        <li><i class="fas fa-check-circle"></i> Desarrollo integral</li>
+                        <li><i class="fas fa-check-circle"></i> Compromiso familiar</li>
+                        <li><i class="fas fa-check-circle"></i> Excelencia educativa</li>
                     </ul>
                 </div>
             </div>
@@ -1022,11 +1067,10 @@
             </div>
         </section>
 
-          <!-- Galería - SOLO 3 IMÁGENES -->
+        <!-- Galería -->
         <section id="instalaciones">
             <h2 class="section-title">Nuestras Instalaciones</h2>
             <div class="galeria-grid">
-                <!-- Imagen 1: Entrada -->
                 <div class="galeria-item">
                     <img src="imagenes/entrada.jpg" alt="Entrada del Jardín Infantil San Nicolás">
                     <div class="galeria-overlay">
@@ -1035,7 +1079,6 @@
                     </div>
                 </div>
                 
-                <!-- Imagen 2: Aula -->
                 <div class="galeria-item">
                     <img src="imagenes/aula.jpg" alt="Aula del Jardín Infantil San Nicolás">
                     <div class="galeria-overlay">
@@ -1043,7 +1086,7 @@
                         <p>Espacios preparados para el aprendizaje</p>
                     </div>
                 </div>
-                <!-- Imagen 3: Áreas de Juego (AHORA CON IMAGEN REAL) -->
+                
                 <div class="galeria-item">
                     <img src="imagenes/juegos.jpg" alt="Áreas de juego del Jardín Infantil San Nicolás">
                     <div class="galeria-overlay">
@@ -1080,46 +1123,65 @@
             </div>
         </section>
 
-        <!-- Contacto -->
+        <!-- Contacto (PROFESIONAL) -->
         <section id="contacto">
             <h2 class="section-title">Contáctanos</h2>
             <div class="contacto-container">
                 <div class="contacto-info">
-                    <h3>Información<br>de Contacto</h3>
+                    <h3>Información de Contacto</h3>
                     <div class="contacto-detalle">
                         <i class="fas fa-phone"></i>
-                        <p><a href="tel:+56582218116">(58) 221 8116</a></p>
+                        <div>
+                            <p style="font-weight: 600; margin-bottom: 0.2rem;">Teléfono</p>
+                            <p><a href="tel:+56582218116">(58) 221 8116</a></p>
+                        </div>
                     </div>
                     <div class="contacto-detalle">
                         <i class="fas fa-envelope"></i>
-                        <p>ji-sannicolas@hotmail.com</p>
+                        <div>
+                            <p style="font-weight: 600; margin-bottom: 0.2rem;">Correo electrónico</p>
+                            <p><a href="mailto:ji-sannicolas@hotmail.com">ji-sannicolas@hotmail.com</a></p>
+                        </div>
                     </div>
                     <div class="contacto-detalle">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>Pje. Simón Molinares 3022<br>Arica, Chile</p>
+                        <div>
+                            <p style="font-weight: 600; margin-bottom: 0.2rem;">Dirección</p>
+                            <p>Pje. Simón Molinares 3022<br>Arica, Chile</p>
+                        </div>
                     </div>
                     <div class="contacto-detalle">
                         <i class="fas fa-clock"></i>
-                        <p>Lunes a Viernes: 8:00 - 18:00</p>
+                        <div>
+                            <p style="font-weight: 600; margin-bottom: 0.2rem;">Horario de atención</p>
+                            <p>Lunes a Viernes: 8:00 - 18:00</p>
+                        </div>
                     </div>
                     <div class="contacto-detalle">
                         <i class="fab fa-whatsapp"></i>
-                        <p><a href="https://wa.me/56582218116" target="_blank">Escríbenos aquí</a></p>
+                        <div>
+                            <p style="font-weight: 600; margin-bottom: 0.2rem;">WhatsApp</p>
+                            <p><a href="https://wa.me/56582218116" target="_blank">+56 58 221 8116</a></p>
+                        </div>
                     </div>
                 </div>
                 <div class="contacto-form">
                     <form>
                         <div class="form-group">
-                            <input type="text" placeholder="Nombre completo" required>
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" placeholder="Ej: María González" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Correo electrónico" required>
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" placeholder="ejemplo@correo.com" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Teléfono">
+                            <label for="telefono">Teléfono de contacto</label>
+                            <input type="tel" id="telefono" placeholder="+56 9 1234 5678">
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="¿Cómo podemos ayudarte?" required></textarea>
+                            <label for="mensaje">¿Cómo podemos ayudarte?</label>
+                            <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
                         </div>
                         <button type="submit" class="btn-submit">Enviar mensaje</button>
                     </form>
@@ -1130,8 +1192,8 @@
 
     <footer>
         <div class="social-links">
-            <a href="https://www.facebook.com/p/San-Nicolas-Jard%25C3%25ADn-Infantil-100057297735879/?locale=es_LA"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/jisannicolas/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/p/San-Nicolas-Jard%25C3%25ADn-Infantil-100057297735879/?locale=es_LA" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/jisannicolas/" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/56582218116" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
         <p>© 2026 Jardín Infantil San Nicolás - 35 años en Arica, Chile</p>
@@ -1140,7 +1202,6 @@
 
     <!-- Script para menú móvil y smooth scrolling -->
     <script>
-        // Menú hamburguesa para móvil
         const menuToggle = document.getElementById('menu-toggle');
         const navLinks = document.getElementById('nav-links');
 
@@ -1148,7 +1209,6 @@
             navLinks.classList.toggle('active');
         });
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1158,12 +1218,10 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Cerrar menú móvil al hacer clic
                     navLinks.classList.remove('active');
                 }
             });
         });
     </script>
 </body>
-
 </html>
