@@ -1,1227 +1,848 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>San Nicolás Jardín Infantil | Arica, Chile</title>
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Combinación de tipografía infantil y profesional -->
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #2d3436;
-            line-height: 1.5;
-            background-color: #f8f9fa;
-        }
-
-        /* Header y Navegación (se mantiene profesional) */
-        header {
-            background: white;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 0.5rem 0;
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0.8rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #2d3436;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #FF9A8B, #FF6B8B, #D16BA5);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            color: #FF6B8B;
-            cursor: pointer;
-        }
-
-        /* Hero Section (mantiene estilo infantil) */
-        #inicio {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 1.5rem;
-            overflow: hidden;
-            background: linear-gradient(to bottom, #6ec6ff, #b3e5fc);
-        }
-
-        #inicio::before {
-            content: "";
-            position: absolute;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 140%;
-            height: 350px;
-            background: conic-gradient(
-                red, orange, yellow, green, blue, indigo, violet, red
-            );
-            border-radius: 50%;
-            opacity: 0.4;
-            animation: girarArcoiris 20s linear infinite;
-        }
-
-        @keyframes girarArcoiris {
-            from { transform: translateX(-50%) rotate(0deg); }
-            to { transform: translateX(-50%) rotate(360deg); }
-        }
-
-        #inicio::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 120px;
-            background: #4CAF50;
-        }
-
-        .sol {
-            position: absolute;
-            top: 60px;
-            right: 80px;
-            width: 100px;
-            height: 100px;
-            background: #FFD54F;
-            border-radius: 50%;
-            box-shadow: 0 0 40px #FFD54F;
-            animation: flotarSol 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes flotarSol {
-            from { transform: translateY(0); }
-            to { transform: translateY(-15px); }
-        }
-
-        .nube {
-            position: absolute;
-            width: 130px;
-            height: 60px;
-            background: white;
-            border-radius: 50px;
-            box-shadow: 30px 10px 0 10px white, 60px 5px 0 5px white;
-            opacity: 0.9;
-            animation: moverNube 35s linear infinite;
-        }
-
-        .nube1 { top: 100px; left: -200px; }
-        .nube2 { top: 180px; animation-duration: 50s; left: -300px; }
-
-        @keyframes moverNube {
-            from { transform: translateX(0); }
-            to { transform: translateX(150vw); }
-        }
-
-        .burbuja {
-            position: absolute;
-            bottom: 0;
-            width: 20px;
-            height: 20px;
-            background: rgba(255,255,255,0.6);
-            border-radius: 50%;
-            animation: subir 8s linear infinite;
-        }
-
-        .burbuja:nth-child(1) { left: 20%; animation-duration: 6s; }
-        .burbuja:nth-child(2) { left: 40%; animation-duration: 8s; }
-        .burbuja:nth-child(3) { left: 60%; animation-duration: 7s; }
-        .burbuja:nth-child(4) { left: 80%; animation-duration: 9s; }
-
-        @keyframes subir {
-            from { transform: translateY(0) scale(1); opacity: 1; }
-            to { transform: translateY(-600px) scale(1.5); opacity: 0; }
-        }
-
-        #inicio .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
-        }
-
-        .hero-content h2 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(5px);
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: #FF6B8B;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Secciones generales */
-        section {
-            padding: 5rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 3rem;
-            color: #2d3436;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, #FF9A8B, #FF6B8B, #D16BA5);
-            border-radius: 2px;
-        }
-
-        /* Sección de Consultas Telefónicas */
-        .consulta-telefonica {
-            background: linear-gradient(135deg, #f6f9fc, #e9f2f9);
-            border-radius: 30px;
-            padding: 3rem 2rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            border: 1px solid rgba(255,107,139,0.2);
-        }
-
-        .consulta-telefonica h3 {
-            font-size: 2rem;
-            color: #2d3436;
-            margin-bottom: 1rem;
-        }
-
-        .consulta-telefonica .subtitulo {
-            font-size: 1.1rem;
-            color: #636e72;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .telefono-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-telefono {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1rem 2rem;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .btn-telefono i {
-            font-size: 1.5rem;
-        }
-
-        .btn-llamar {
-            background: #FF6B8B;
-            color: white;
-        }
-
-        .btn-llamar:hover {
-            background: #e05575;
-            transform: scale(1.05);
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-        }
-
-        .btn-whatsapp:hover {
-            background: #128C7E;
-            transform: scale(1.05);
-        }
-
-        .horario-atencion {
-            margin-top: 1.5rem;
-            color: #636e72;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        /* Nosotros - Título infantil */
-        #nosotros .section-title {
-            font-family: 'Comic Neue', cursive;
-            font-size: 4rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #f8b81f, #f18f2e, #e85d3a, #c94b9b, #5e4fa2, #2f9bc5, #3bb08b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-            padding-bottom: 15px;
-            border-bottom: 4px dashed #f8b81f;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.05);
-            width: 100%;
-        }
-
-        #nosotros .section-title::after {
-            display: none; /* Ocultamos la línea por defecto */
-        }
-
-        .nosotros-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            height: 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card i {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #FF9A8B, #FF6B8B, #D16BA5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            color: #636e72;
-            font-size: 0.95rem;
-        }
-
-        .valores-list {
-            list-style: none;
-        }
-
-        .valores-list li {
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: #636e72;
-            font-size: 0.95rem;
-        }
-
-        .valores-list i {
-            font-size: 1rem;
-            margin-bottom: 0;
-            background: none;
-            -webkit-text-fill-color: #FF6B8B;
-            color: #FF6B8B;
-        }
-
-        /* Especialización */
-        .especializacion-banner {
-            background: linear-gradient(135deg, #f6f9fc, #e9f2f9);
-            border-radius: 20px;
-            padding: 1.8rem;
-            margin-top: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            border-left: 5px solid #FF6B8B;
-        }
-
-        .especializacion-banner i {
-            font-size: 2.5rem;
-            color: #FF6B8B;
-        }
-
-        .especializacion-banner p {
-            font-size: 1rem;
-            color: #2d3436;
-        }
-
-        /* Niveles Educativos */
-        .niveles-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .nivel-item {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .nivel-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .nivel-img {
-            height: 150px;
-            background: linear-gradient(135deg, #FF9A8B, #FF6B8B, #D16BA5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nivel-img i {
-            font-size: 3rem;
-            color: white;
-        }
-
-        .nivel-content {
-            padding: 1.5rem;
-        }
-
-        .nivel-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .nivel-content p {
-            color: #636e72;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .nivel-features {
-            list-style: none;
-        }
-
-        .nivel-features li {
-            margin-bottom: 0.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #636e72;
-            font-size: 0.85rem;
-        }
-
-        .nivel-features i {
-            color: #FF6B8B;
-            font-size: 0.8rem;
-        }
-
-        /* Galería */
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .galeria-item {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            height: 280px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .galeria-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            display: block;
-        }
-
-        .galeria-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .galeria-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: white;
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .galeria-item:hover .galeria-overlay {
-            transform: translateY(0);
-        }
-
-        .galeria-overlay h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .galeria-overlay p {
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-
-        /* Ubicación */
-        .ubicacion-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            background: white;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
-
-        .mapa {
-            height: 400px;
-        }
-
-        .mapa iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .info-ubicacion {
-            padding: 2rem;
-        }
-
-        .info-ubicacion h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .direccion-completa {
-            color: #FF6B8B;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .horarios {
-            margin: 1.5rem 0;
-        }
-
-        .horario-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid #e9ecef;
-            font-size: 0.95rem;
-        }
-
-        .horario-item .dia {
-            font-weight: 600;
-        }
-
-        .horario-item .hora {
-            color: #FF6B8B;
-            font-weight: 500;
-        }
-
-        .horario-item.cerrado .hora {
-            color: #e17055;
-        }
-
-        /* ===== CONTACTO PROFESIONAL ===== */
-        .contacto-container {
-            display: grid;
-            grid-template-columns: 1.2fr 1.8fr;
-            gap: 2rem;
-            background: white;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-            border: 1px solid rgba(255,107,139,0.1);
-        }
-
-        .contacto-info {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            padding: 2.5rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contacto-info::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,107,139,0.1) 0%, transparent 70%);
-            z-index: 0;
-        }
-
-        .contacto-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contacto-info h3::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: #FF6B8B;
-            border-radius: 3px;
-        }
-
-        .contacto-detalle {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.8rem;
-            align-items: flex-start;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contacto-detalle i {
-            font-size: 1.3rem;
-            width: 24px;
-            color: #FF6B8B;
-            margin-top: 3px;
-        }
-
-        .contacto-detalle p {
-            font-size: 1rem;
-            opacity: 0.95;
-            line-height: 1.6;
-        }
-
-        .contacto-detalle a {
-            color: white;
-            text-decoration: none;
-            border-bottom: 1px dotted rgba(255,255,255,0.3);
-            transition: border-color 0.3s ease;
-        }
-
-        .contacto-detalle a:hover {
-            border-bottom-color: #FF6B8B;
-        }
-
-        .contacto-form {
-            padding: 2.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: #1e293b;
-            font-size: 0.95rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.9rem 1.2rem;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            background: #fafbfc;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #FF6B8B;
-            background: white;
-            box-shadow: 0 5px 15px rgba(255,107,139,0.1);
-        }
-
-        .form-group textarea {
-            height: 140px;
-            resize: vertical;
-        }
-
-        .btn-submit {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            color: white;
-            border: none;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-submit:hover {
-            background: linear-gradient(135deg, #2d3a4f, #1a2538);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
-        }
-
-        /* Footer */
-        footer {
-            background: #1e293b;
-            color: white;
-            padding: 2.5rem 5%;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.3rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #FF6B8B;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* WhatsApp Flotante */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 10px 30px rgba(37,211,102,0.3);
-            transition: all 0.3s ease;
-            z-index: 999;
-            text-decoration: none;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* Responsive */
-        @media screen and (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 0.8rem;
-            }
-
-            .hero-content h2 {
-                font-size: 2.2rem;
-            }
-
-            #nosotros .section-title {
-                font-size: 2.8rem;
-            }
-
-            .nosotros-grid,
-            .niveles-grid,
-            .galeria-grid,
-            .contacto-container {
-                grid-template-columns: 1fr;
-            }
-
-            .contacto-info {
-                padding: 2rem;
-            }
-
-            .contacto-form {
-                padding: 2rem;
-            }
-
-            .telefono-buttons {
-                flex-direction: column;
-            }
-
-            .btn-telefono {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media screen and (min-width: 769px) and (max-width: 1024px) {
-            .nosotros-grid,
-            .niveles-grid,
-            .galeria-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .contacto-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jardín Infantil San Nicolás | Arica, Chile</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --amarillo: #FFD94A;
+    --naranja: #FF8C42;
+    --rosa: #FF6B9D;
+    --azul: #4ECDC4;
+    --verde: #95E06C;
+    --morado: #A78BFA;
+    --celeste: #60A5FA;
+    --blanco: #FFFDF7;
+    --texto: #2D3748;
+    --texto-suave: #718096;
+    --sombra: 0 8px 32px rgba(0,0,0,0.10);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--blanco);
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,253,247,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 3px solid var(--amarillo);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+  }
+  .nav-logo img {
+    height: 50px; width: 50px; object-fit: contain;
+    border-radius: 50%; border: 3px solid var(--amarillo);
+  }
+  .nav-logo-text {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem; color: var(--naranja); line-height: 1.1;
+  }
+  .nav-logo-text span { display:block; font-size:0.75rem; color: var(--texto-suave); font-family:'Nunito',sans-serif; font-weight:600; }
+  .nav-links { display: flex; gap: 0.3rem; list-style:none; }
+  .nav-links a {
+    text-decoration:none; color: var(--texto);
+    font-weight: 700; font-size: 0.85rem;
+    padding: 6px 12px; border-radius: 999px;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover { background: var(--amarillo); color: #7c5c00; }
+  .nav-cta {
+    background: var(--naranja); color: white !important;
+    border-radius: 999px; padding: 8px 18px !important;
+    box-shadow: 0 4px 12px rgba(255,140,66,0.35);
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+  .nav-cta:hover { transform: scale(1.05); box-shadow: 0 6px 18px rgba(255,140,66,0.5) !important; background: var(--naranja) !important; color:white !important; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #FFF9E6 0%, #E0F7FA 50%, #FCE4F0 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 90px 2rem 4rem;
+  }
+  .hero-bg-shapes { position:absolute; inset:0; pointer-events:none; }
+  .shape {
+    position: absolute; border-radius: 50%;
+    opacity: 0.18;
+  }
+  .shape-1 { width:320px;height:320px; background:var(--amarillo); top:-80px; left:-80px; animation: float 7s ease-in-out infinite; }
+  .shape-2 { width:200px;height:200px; background:var(--rosa); bottom:60px; right:-50px; animation: float 9s ease-in-out infinite reverse; }
+  .shape-3 { width:150px;height:150px; background:var(--azul); top:40%; left:60%; animation: float 6s ease-in-out infinite 1s; }
+  .shape-4 { width:100px;height:100px; background:var(--verde); bottom:20%; left:10%; animation: float 8s ease-in-out infinite 2s; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)} }
+
+  .hero-content { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; max-width:1100px; width:100%; }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background:white; border-radius:999px; padding:6px 16px;
+    font-size:0.8rem; font-weight:700; color:var(--naranja);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.10); margin-bottom:1rem;
+    border: 2px solid var(--amarillo);
+  }
+  .hero-badge .dot { width:8px;height:8px;border-radius:50%;background:var(--verde);display:inline-block; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  .hero h1 {
+    font-family:'Fredoka One',cursive;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.1; color: var(--texto); margin-bottom:1rem;
+  }
+  .hero h1 em { color: var(--naranja); font-style:normal; }
+  .hero p { font-size:1.1rem; color: var(--texto-suave); line-height:1.7; margin-bottom:1.8rem; font-weight:600; }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background: var(--naranja); color:white; border:none;
+    padding: 14px 28px; border-radius: 999px; font-family:'Nunito',sans-serif;
+    font-weight:800; font-size:1rem; cursor:pointer; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    box-shadow: 0 6px 20px rgba(255,140,66,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform:translateY(-3px); box-shadow: 0 10px 28px rgba(255,140,66,0.5); }
+  .btn-secondary {
+    background: white; color: var(--texto); border: 2.5px solid var(--amarillo);
+    padding: 14px 28px; border-radius: 999px; font-family:'Nunito',sans-serif;
+    font-weight:800; font-size:1rem; cursor:pointer; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background:var(--amarillo); color:#7c5c00; transform:translateY(-3px); }
+  .hero-trust {
+    display:flex; gap:1.5rem; margin-top:2rem; flex-wrap:wrap;
+  }
+  .trust-pill {
+    display:flex; align-items:center; gap:6px;
+    background:white; border-radius:999px; padding:6px 14px;
+    font-size:0.78rem; font-weight:700; color:var(--texto);
+    box-shadow:0 2px 10px rgba(0,0,0,0.08); border:1.5px solid #f0f0f0;
+  }
+  .trust-pill .icon { font-size:1rem; }
+
+  /* Hero visual */
+  .hero-visual { display:flex; justify-content:center; align-items:center; position:relative; }
+  .hero-img-wrapper {
+    position:relative; width:360px; height:360px;
+  }
+  .hero-img-circle {
+    width:300px; height:300px; border-radius:50%;
+    background: linear-gradient(135deg, var(--amarillo), var(--naranja));
+    display:flex; align-items:center; justify-content:center;
+    margin: 30px auto; box-shadow:0 20px 60px rgba(255,140,66,0.3);
+    overflow:hidden; border:6px solid white;
+  }
+  .hero-img-circle img { width:100%; height:100%; object-fit:cover; }
+  .hero-float-card {
+    position:absolute; background:white; border-radius:18px; padding:12px 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12); font-size:0.78rem; font-weight:700;
+    display:flex; align-items:center; gap:8px; white-space:nowrap;
+    animation: float 5s ease-in-out infinite;
+  }
+  .card-1 { top:10px; right:0; animation-delay:0s; border-left:4px solid var(--verde); }
+  .card-2 { bottom:40px; left:0; animation-delay:1.5s; border-left:4px solid var(--rosa); }
+  .card-3 { top:45%; right:-20px; animation-delay:3s; border-left:4px solid var(--azul); }
+  .hero-float-card .fc-icon { font-size:1.4rem; }
+  .hero-float-card .fc-label { color:var(--texto-suave); font-weight:600; font-size:0.7rem; display:block; }
+
+  /* ===== SECTION BASE ===== */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width:1100px; margin:0 auto; }
+  .section-tag {
+    display:inline-block; background:var(--amarillo); color:#7c5c00;
+    font-weight:800; font-size:0.75rem; padding:4px 14px; border-radius:999px;
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.75rem;
+  }
+  .section-title {
+    font-family:'Fredoka One',cursive; font-size:clamp(1.8rem,4vw,2.6rem);
+    color:var(--texto); margin-bottom:1rem; line-height:1.15;
+  }
+  .section-title em { color:var(--naranja); font-style:normal; }
+  .section-sub { font-size:1rem; color:var(--texto-suave); max-width:560px; font-weight:600; line-height:1.7; }
+
+  /* ===== TRUST BAR ===== */
+  .trust-bar {
+    background: var(--texto); padding: 2rem;
+    display:flex; justify-content:center;
+  }
+  .trust-bar-inner {
+    max-width:1000px; width:100%;
+    display:flex; justify-content:space-around; align-items:center; flex-wrap:wrap; gap:1.5rem;
+  }
+  .trust-item { text-align:center; }
+  .trust-num {
+    font-family:'Fredoka One',cursive; font-size:2.4rem; color:var(--amarillo); line-height:1;
+  }
+  .trust-label { font-size:0.75rem; color:#a0aec0; font-weight:700; margin-top:2px; letter-spacing:0.04em; }
+  .trust-divider { width:1px; height:50px; background:rgba(255,255,255,0.12); }
+
+  /* ===== NOSOTROS ===== */
+  .nosotros { background: #FFFDF7; }
+  .nosotros-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; margin-top:3rem; }
+  .value-cards { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .value-card {
+    background:white; border-radius:20px; padding:1.25rem;
+    box-shadow: var(--sombra); border: 2px solid transparent;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .value-card:hover { border-color: var(--amarillo); transform:translateY(-4px); }
+  .value-card .vc-icon { font-size:2rem; margin-bottom:0.5rem; display:block; }
+  .value-card h4 { font-weight:800; font-size:0.9rem; margin-bottom:0.25rem; }
+  .value-card p { font-size:0.8rem; color:var(--texto-suave); font-weight:600; }
+  .nosotros-text p { font-size:1rem; color:var(--texto-suave); line-height:1.8; font-weight:600; margin-bottom:1rem; }
+  .highlight-box {
+    background: linear-gradient(135deg,#FFF9E0,#FFECB3);
+    border-left: 5px solid var(--amarillo);
+    border-radius: 0 16px 16px 0; padding:1.25rem 1.5rem; margin-top:1.5rem;
+    font-weight:700; font-size:0.95rem; color:#7c5c00;
+  }
+
+  /* ===== NIVELES ===== */
+  .niveles { background: linear-gradient(160deg, #E0F7FA 0%, #EDE7F6 100%); }
+  .niveles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+  .nivel-card {
+    background:white; border-radius:28px; padding:2rem 1.5rem;
+    box-shadow: var(--sombra); text-align:center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position:relative; overflow:hidden;
+  }
+  .nivel-card::before {
+    content:''; position:absolute; top:0;left:0;right:0; height:6px;
+  }
+  .nivel-card.c1::before { background:var(--naranja); }
+  .nivel-card.c2::before { background:var(--azul); }
+  .nivel-card.c3::before { background:var(--morado); }
+  .nivel-card:hover { transform:translateY(-8px); box-shadow:0 20px 50px rgba(0,0,0,0.13); }
+  .nivel-emoji { font-size:3.5rem; margin-bottom:1rem; display:block; }
+  .nivel-card h3 { font-family:'Fredoka One',cursive; font-size:1.4rem; color:var(--texto); margin-bottom:0.5rem; }
+  .nivel-card .nivel-edad {
+    display:inline-block; font-size:0.72rem; font-weight:800;
+    padding:3px 12px; border-radius:999px; margin-bottom:1rem;
+  }
+  .c1 .nivel-edad { background:#FFF3E0; color:#E65100; }
+  .c2 .nivel-edad { background:#E0F7FA; color:#006064; }
+  .c3 .nivel-edad { background:#F3E5F5; color:#6A1B9A; }
+  .nivel-card p { font-size:0.87rem; color:var(--texto-suave); line-height:1.7; font-weight:600; margin-bottom:1.25rem; }
+  .nivel-features { list-style:none; text-align:left; }
+  .nivel-features li {
+    font-size:0.82rem; font-weight:700; color:var(--texto);
+    padding:5px 0; display:flex; align-items:center; gap:8px;
+  }
+  .nivel-features li::before { content:'✓'; font-weight:900; flex-shrink:0; }
+  .c1 .nivel-features li::before { color:var(--naranja); }
+  .c2 .nivel-features li::before { color:var(--azul); }
+  .c3 .nivel-features li::before { color:var(--morado); }
+
+  /* ===== INCLUSIÓN ===== */
+  .inclusion {
+    background: var(--naranja); padding:4rem 2rem;
+    position:relative; overflow:hidden;
+  }
+  .inclusion::before { content:''; position:absolute; top:-60px;left:-60px; width:200px;height:200px; border-radius:50%; background:rgba(255,255,255,0.08); }
+  .inclusion::after { content:''; position:absolute; bottom:-80px;right:-50px; width:280px;height:280px; border-radius:50%; background:rgba(255,255,255,0.07); }
+  .inclusion-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:auto 1fr; gap:3rem; align-items:center; position:relative;z-index:1; }
+  .inclusion-icon { font-size:5rem; }
+  .inclusion h2 { font-family:'Fredoka One',cursive; font-size:2rem; color:white; margin-bottom:0.75rem; }
+  .inclusion p { color:rgba(255,255,255,0.9); font-weight:600; font-size:1rem; line-height:1.7; }
+  .inclusion-tags { display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:1rem; }
+  .inclusion-tag { background:rgba(255,255,255,0.2); color:white; font-size:0.78rem; font-weight:800; padding:5px 14px; border-radius:999px; border:1.5px solid rgba(255,255,255,0.35); }
+
+  /* ===== INSTALACIONES ===== */
+  .instalaciones { background:#FFFDF7; }
+  .inst-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+  .inst-card {
+    border-radius:24px; overflow:hidden; box-shadow:var(--sombra);
+    transition: transform 0.3s; cursor:default;
+  }
+  .inst-card:hover { transform:scale(1.03); }
+  .inst-img { height:200px; background:#f0f0f0; overflow:hidden; }
+  .inst-img img { width:100%;height:100%;object-fit:cover; transition:transform 0.4s; }
+  .inst-card:hover .inst-img img { transform:scale(1.08); }
+  .inst-info { background:white; padding:1.25rem; }
+  .inst-info h4 { font-family:'Fredoka One',cursive; font-size:1.1rem; color:var(--texto); margin-bottom:0.3rem; }
+  .inst-info p { font-size:0.82rem; color:var(--texto-suave); font-weight:600; }
+
+  /* ===== UBICACIÓN ===== */
+  .ubicacion { background: linear-gradient(160deg,#E8F5E9,#E3F2FD); }
+  .ubicacion-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; margin-top:3rem; }
+  .horario-card { background:white; border-radius:24px; padding:2rem; box-shadow:var(--sombra); margin-bottom:1.5rem; }
+  .horario-card h4 { font-family:'Fredoka One',cursive; font-size:1.2rem; color:var(--texto); margin-bottom:1rem; }
+  .horario-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px dashed #f0f0f0; font-size:0.87rem; font-weight:700; }
+  .horario-row:last-child { border-bottom:none; }
+  .horario-row .dia { color:var(--texto-suave); }
+  .horario-row .hora { color:var(--texto); }
+  .open-badge { background:#DCFCE7; color:#166534; font-size:0.7rem; font-weight:800; padding:2px 10px; border-radius:999px; }
+  .closed-badge { background:#FEE2E2; color:#991B1B; font-size:0.7rem; font-weight:800; padding:2px 10px; border-radius:999px; }
+  .dir-card { background:white; border-radius:24px; padding:2rem; box-shadow:var(--sombra); }
+  .dir-card h4 { font-family:'Fredoka One',cursive; font-size:1.2rem; color:var(--texto); margin-bottom:1rem; }
+  .dir-item { display:flex; gap:12px; align-items:flex-start; margin-bottom:1rem; }
+  .dir-item .di-icon { font-size:1.3rem; flex-shrink:0; margin-top:2px; }
+  .dir-item .di-label { font-size:0.7rem; font-weight:800; color:var(--texto-suave); text-transform:uppercase; letter-spacing:0.05em; }
+  .dir-item .di-val { font-size:0.9rem; font-weight:700; color:var(--texto); }
+  .map-embed { border-radius:20px; overflow:hidden; height:300px; background:#e0e0e0; box-shadow:var(--sombra); }
+  .map-embed iframe { width:100%;height:100%;border:none; }
+
+  /* ===== CONTACTO ===== */
+  .contacto { background:#FFFDF7; }
+  .contacto-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:3rem; align-items:start; }
+  .contact-channels { display:flex; flex-direction:column; gap:1rem; }
+  .channel-btn {
+    display:flex; align-items:center; gap:1rem;
+    background:white; border-radius:20px; padding:1.25rem 1.5rem;
+    box-shadow:var(--sombra); text-decoration:none; color:var(--texto);
+    font-weight:700; transition:transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+  }
+  .channel-btn:hover { transform:translateX(6px); border-color:var(--amarillo); }
+  .channel-icon { width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0; }
+  .ch-green { background:#DCFCE7; }
+  .ch-blue { background:#DBEAFE; }
+  .ch-pink { background:#FCE7F3; }
+  .channel-text .ch-label { font-size:0.7rem; font-weight:800; color:var(--texto-suave); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px; }
+  .channel-text .ch-val { font-size:1rem; font-weight:800; }
+  .form-card { background:white; border-radius:28px; padding:2.5rem; box-shadow:var(--sombra); }
+  .form-card h3 { font-family:'Fredoka One',cursive; font-size:1.5rem; color:var(--texto); margin-bottom:1.5rem; }
+  .form-group { margin-bottom:1.25rem; }
+  .form-group label { display:block; font-size:0.8rem; font-weight:800; color:var(--texto); margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:0.04em; }
+  .form-group input, .form-group textarea, .form-group select {
+    width:100%; padding:12px 16px; border:2px solid #E5E7EB; border-radius:14px;
+    font-family:'Nunito',sans-serif; font-size:0.92rem; color:var(--texto);
+    outline:none; transition:border-color 0.2s; background:var(--blanco);
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--naranja); }
+  .form-group textarea { height:110px; resize:vertical; }
+  .btn-form { width:100%; padding:14px; background:var(--naranja); color:white; border:none; border-radius:999px; font-family:'Nunito',sans-serif; font-weight:800; font-size:1rem; cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 6px 20px rgba(255,140,66,0.35); }
+  .btn-form:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(255,140,66,0.5); }
+  .form-success { display:none; background:#DCFCE7; border-radius:14px; padding:1.25rem; text-align:center; color:#166534; font-weight:700; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--texto); color:white; padding:3rem 2rem 1.5rem;
+  }
+  .footer-inner { max-width:1100px; margin:0 auto; }
+  .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:2.5rem; }
+  .footer-brand { }
+  .footer-logo { display:flex; align-items:center; gap:12px; margin-bottom:1rem; text-decoration:none; }
+  .footer-logo img { height:50px;width:50px;object-fit:contain;border-radius:50%;border:3px solid var(--amarillo); }
+  .footer-logo-text { font-family:'Fredoka One',cursive; font-size:1.15rem; color:var(--amarillo); line-height:1.1; }
+  .footer-logo-text span { display:block; font-size:0.72rem; color:#a0aec0; font-family:'Nunito',sans-serif; font-weight:600; }
+  .footer-desc { font-size:0.85rem; color:#a0aec0; line-height:1.7; font-weight:600; }
+  .footer-col h5 { font-family:'Fredoka One',cursive; font-size:1rem; color:var(--amarillo); margin-bottom:1rem; }
+  .footer-col ul { list-style:none; }
+  .footer-col ul li { margin-bottom:0.5rem; }
+  .footer-col ul li a { color:#a0aec0; text-decoration:none; font-size:0.85rem; font-weight:600; transition:color 0.2s; }
+  .footer-col ul li a:hover { color:var(--amarillo); }
+  .footer-col p { font-size:0.85rem; color:#a0aec0; font-weight:600; line-height:1.7; }
+  .footer-bottom {
+    border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+  }
+  .footer-bottom p { font-size:0.78rem; color:#718096; font-weight:600; }
+  .footer-credits a { color:var(--amarillo); text-decoration:none; font-weight:800; }
+  .footer-credits a:hover { text-decoration:underline; }
+  .footer-badges { display:flex; gap:0.5rem; flex-wrap:wrap; }
+  .footer-badge { font-size:0.7rem; font-weight:800; padding:3px 10px; border-radius:999px; }
+  .fb-green { background:#DCFCE7; color:#166534; }
+  .fb-blue { background:#DBEAFE; color:#1E40AF; }
+
+  /* ===== DECORATIVE STARS ===== */
+  .stars { position:absolute; pointer-events:none; }
+  .star { position:absolute; animation:twinkle 2s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0.3;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
+
+  /* ===== WHATSAPP FLOAT ===== */
+  .wa-float {
+    position:fixed; bottom:24px; right:24px; z-index:999;
+    width:60px;height:60px;border-radius:50%;
+    background:#25D366; display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem; text-decoration:none; color:white;
+    box-shadow:0 8px 28px rgba(37,211,102,0.5);
+    animation:wa-bounce 2s ease-in-out infinite;
+  }
+  @keyframes wa-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .wa-float:hover { transform:scale(1.1) !important; animation:none; }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:768px){
+    .nav-links { display:none; }
+    .hero-content { grid-template-columns:1fr; text-align:center; }
+    .hero-visual { display:none; }
+    .hero-trust { justify-content:center; }
+    .hero-btns { justify-content:center; }
+    .nosotros-grid, .contacto-grid, .ubicacion-grid { grid-template-columns:1fr; }
+    .niveles-grid { grid-template-columns:1fr; }
+    .inst-grid { grid-template-columns:1fr; }
+    .value-cards { grid-template-columns:1fr; }
+    .trust-divider { display:none; }
+    .footer-top { grid-template-columns:1fr; }
+    .inclusion-inner { grid-template-columns:1fr; text-align:center; }
+    .footer-bottom { flex-direction:column; text-align:center; }
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+</style>
 </head>
 <body>
-    <!-- WhatsApp Flotante -->
-    <a href="https://wa.me/56582218116?text=Hola%21%20Quisiera%20informaci%C3%B3n%20sobre%20el%20Jard%C3%ADn%20Infantil%20San%20Nicol%C3%A1s" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="imagenes/logo.png" alt="Jardín Infantil San Nicolás">
-            </div>
-            <div class="menu-toggle" id="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#niveles">Niveles</a></li>
-                <li><a href="#instalaciones">Instalaciones</a></li>
-                <li><a href="#ubicacion">Ubicación</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- WhatsApp flotante -->
+<a class="wa-float" href="https://wa.me/56582218116?text=Hola!%20Quisiera%20información%20sobre%20el%20Jardín%20Infantil%20San%20Nicolás." target="_blank" title="Escríbenos por WhatsApp">💬</a>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="inicio" class="hero">
-            <div class="sol"></div>
-            <div class="nube nube1"></div>
-            <div class="nube nube2"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            <div class="burbuja"></div>
-            
-            <div class="hero-content">
-                <div class="hero-badge">35 años formando con amor en Arica</div>
-                <h2>Jardín Infantil<br>San Nicolás</h2>
-                <p>"Crecemos juntos en valores"</p>
-                <a href="#contacto" class="btn">Conoce más</a>
-            </div>
-        </section>
+<!-- NAVBAR -->
+<nav>
+  <a class="nav-logo" href="#inicio">
+    <img src="https://jisanicolas.online/imagenes/logo.png" alt="Logo San Nicolás" onerror="this.style.display='none'">
+    <div class="nav-logo-text">San Nicolás<span>Jardín Infantil · Arica</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#niveles">Niveles</a></li>
+    <li><a href="#instalaciones">Instalaciones</a></li>
+    <li><a href="#ubicacion">Ubicación</a></li>
+    <li><a href="#contacto" class="nav-cta">Contáctanos</a></li>
+  </ul>
+</nav>
 
-        <!-- Sección de Consultas Telefónicas -->
-        <section id="consulta-telefonica">
-            <div class="consulta-telefonica">
-                <h3>📞 ¿Tienes dudas?</h3>
-                <p class="subtitulo">Llámanos o escríbenos para información sobre niveles, matrículas y necesidades especiales</p>
-                
-                <div class="telefono-buttons">
-                    <a href="tel:+56582218116" class="btn-telefono btn-llamar">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>Llamar al (58) 221 8116</span>
-                    </a>
-                    
-                    <a href="https://wa.me/56582218116?text=Hola%21%20Quisiera%20informaci%C3%B3n%20sobre%20el%20Jard%C3%ADn%20Infantil%20San%20Nicol%C3%A1s.%20Me%20gustar%C3%ADa%20saber%20sobre%20niveles%2C%20matr%C3%ADculas%20y%20disponibilidad." class="btn-telefono btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>WhatsApp</span>
-                    </a>
-                </div>
-                
-                <div class="horario-atencion">
-                    <i class="fas fa-clock"></i>
-                    <span>Lunes a Viernes, 8:00 - 18:00</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Nosotros (título infantil) -->
-        <section id="nosotros">
-            <h2 class="section-title">Sobre Nosotros</h2>
-            
-            <div class="nosotros-grid">
-                <div class="card">
-                    <i class="fas fa-history"></i>
-                    <h3>Nuestra Historia</h3>
-                    <p>Con <strong>35 años de experiencia</strong> en Arica, formamos niños con amor, dedicación y valores. Educación inclusiva y desarrollo integral desde Medio Menor hasta Kínder.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-bullseye"></i>
-                    <h3>Misión</h3>
-                    <p>Brindar educación de calidad para bebés y párvulos hasta kínder, potenciando su desarrollo integral en un ambiente inclusivo que respeta las necesidades educativas especiales.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-heart"></i>
-                    <h3>Valores</h3>
-                    <ul class="valores-list">
-                        <li><i class="fas fa-check-circle"></i> Amor y dedicación</li>
-                        <li><i class="fas fa-check-circle"></i> Inclusión y respeto</li>
-                        <li><i class="fas fa-check-circle"></i> Desarrollo integral</li>
-                        <li><i class="fas fa-check-circle"></i> Compromiso familiar</li>
-                        <li><i class="fas fa-check-circle"></i> Excelencia educativa</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Especialización -->
-            <div class="especializacion-banner">
-                <i class="fas fa-universal-access"></i>
-                <div>
-                    <h3 style="margin-bottom: 0.3rem;">Educación Inclusiva Especializada</h3>
-                    <p>Atendemos <strong>necesidades educativas especiales, incluyendo trastornos motores</strong>. Contamos con modernas salas de usos múltiples y talleres lúdicos.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Niveles Educativos -->
-        <section id="niveles">
-            <h2 class="section-title">Niveles Educativos</h2>
-            <div class="niveles-grid">
-                <div class="nivel-item">
-                    <div class="nivel-img">
-                        <i class="fas fa-child"></i>
-                    </div>
-                    <div class="nivel-content">
-                        <h3>Medio Menor</h3>
-                        <p>Descubrimiento del entorno y desarrollo de habilidades sociales básicas.</p>
-                        <ul class="nivel-features">
-                            <li><i class="fas fa-check"></i> Juego exploratorio</li>
-                            <li><i class="fas fa-check"></i> Psicomotricidad</li>
-                            <li><i class="fas fa-check"></i> Primeros hábitos</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="nivel-item">
-                    <div class="nivel-img">
-                        <i class="fas fa-smile"></i>
-                    </div>
-                    <div class="nivel-content">
-                        <h3>Medio Mayor</h3>
-                        <p>Fortalecimiento de la autonomía y desarrollo del lenguaje.</p>
-                        <ul class="nivel-features">
-                            <li><i class="fas fa-check"></i> Comunicación verbal</li>
-                            <li><i class="fas fa-check"></i> Expresión artística</li>
-                            <li><i class="fas fa-check"></i> Juego simbólico</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="nivel-item">
-                    <div class="nivel-img">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="nivel-content">
-                        <h3>Pre-kínder y Kínder</h3>
-                        <p>Preparación para la transición a la educación básica.</p>
-                        <ul class="nivel-features">
-                            <li><i class="fas fa-check"></i> Lectoescritura inicial</li>
-                            <li><i class="fas fa-check"></i> Razonamiento matemático</li>
-                            <li><i class="fas fa-check"></i> Autonomía personal</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Galería -->
-        <section id="instalaciones">
-            <h2 class="section-title">Nuestras Instalaciones</h2>
-            <div class="galeria-grid">
-                <div class="galeria-item">
-                    <img src="imagenes/entrada.jpg" alt="Entrada del Jardín Infantil San Nicolás">
-                    <div class="galeria-overlay">
-                        <h3>Entrada Principal</h3>
-                        <p>Acceso a nuestro jardín infantil en Arica</p>
-                    </div>
-                </div>
-                
-                <div class="galeria-item">
-                    <img src="imagenes/aula.jpg" alt="Aula del Jardín Infantil San Nicolás">
-                    <div class="galeria-overlay">
-                        <h3>Nuestras Aulas</h3>
-                        <p>Espacios preparados para el aprendizaje</p>
-                    </div>
-                </div>
-                
-                <div class="galeria-item">
-                    <img src="imagenes/juegos.jpg" alt="Áreas de juego del Jardín Infantil San Nicolás">
-                    <div class="galeria-overlay">
-                        <h3>Áreas de Juego</h3>
-                        <p>Patio seguro para la recreación y el desarrollo motor</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Ubicación -->
-        <section id="ubicacion">
-            <h2 class="section-title">Cómo Llegar</h2>
-            <div class="ubicacion-container">
-                <div class="mapa">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.848315687097!2d-70.317273!3d-18.478564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDI4JzQyLjgiUyA3MMKwMTknMDIuMiJX!5e0!3m2!1ses!2scl!4v1645567894567!5m2!1ses!2scl" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-                <div class="info-ubicacion">
-                    <h3>Visítanos en Arica</h3>
-                    <p class="direccion-completa"><i class="fas fa-map-pin"></i> Pje. Simón Molinares 3022, Arica, Chile</p>
-                    
-                    <div class="horarios">
-                        <h4 style="margin-bottom: 0.8rem;">Horarios</h4>
-                        <div class="horario-item">
-                            <span class="dia">Lunes a Viernes</span>
-                            <span class="hora">08:00 - 18:00</span>
-                        </div>
-                        <div class="horario-item cerrado">
-                            <span class="dia">Sábado y Domingo</span>
-                            <span class="hora">Cerrado</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contacto (PROFESIONAL) -->
-        <section id="contacto">
-            <h2 class="section-title">Contáctanos</h2>
-            <div class="contacto-container">
-                <div class="contacto-info">
-                    <h3>Información de Contacto</h3>
-                    <div class="contacto-detalle">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <p style="font-weight: 600; margin-bottom: 0.2rem;">Teléfono</p>
-                            <p><a href="tel:+56582218116">(58) 221 8116</a></p>
-                        </div>
-                    </div>
-                    <div class="contacto-detalle">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <p style="font-weight: 600; margin-bottom: 0.2rem;">Correo electrónico</p>
-                            <p><a href="mailto:ji-sannicolas@hotmail.com">ji-sannicolas@hotmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="contacto-detalle">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <p style="font-weight: 600; margin-bottom: 0.2rem;">Dirección</p>
-                            <p>Pje. Simón Molinares 3022<br>Arica, Chile</p>
-                        </div>
-                    </div>
-                    <div class="contacto-detalle">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <p style="font-weight: 600; margin-bottom: 0.2rem;">Horario de atención</p>
-                            <p>Lunes a Viernes: 8:00 - 18:00</p>
-                        </div>
-                    </div>
-                    <div class="contacto-detalle">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <p style="font-weight: 600; margin-bottom: 0.2rem;">WhatsApp</p>
-                            <p><a href="https://wa.me/56582218116" target="_blank">+56 58 221 8116</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contacto-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="nombre">Nombre completo</label>
-                            <input type="text" id="nombre" placeholder="Ej: María González" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Correo electrónico</label>
-                            <input type="email" id="email" placeholder="ejemplo@correo.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefono">Teléfono de contacto</label>
-                            <input type="tel" id="telefono" placeholder="+56 9 1234 5678">
-                        </div>
-                        <div class="form-group">
-                            <label for="mensaje">¿Cómo podemos ayudarte?</label>
-                            <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">Enviar mensaje</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://www.facebook.com/p/San-Nicolas-Jard%25C3%25ADn-Infantil-100057297735879/?locale=es_LA" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/jisannicolas/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/56582218116" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge"><span class="dot"></span>¡Matrículas abiertas 2026!</div>
+      <h1>Donde los niños<br>aprenden con <em>amor</em> 🌟</h1>
+      <p>35 años formando a los niños y niñas de Arica con dedicación, valores y alegría. Un espacio seguro donde cada pequeño puede crecer a su ritmo.</p>
+      <div class="hero-btns">
+        <a href="#contacto" class="btn-primary">🎒 Inscribe a tu hijo/a</a>
+        <a href="#nosotros" class="btn-secondary">📖 Conoce más</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-pill"><span class="icon">✅</span> Educación inclusiva</div>
+        <div class="trust-pill"><span class="icon">🏅</span> 35 años de experiencia</div>
+        <div class="trust-pill"><span class="icon">💛</span> Ambiente familiar</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrapper">
+        <div class="hero-img-circle">
+          <img src="https://jisanicolas.online/imagenes/entrada.jpg" alt="Jardín San Nicolás" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\'%3E%3Crect fill=\'%23FFD94A\' width=\'300\' height=\'300\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' font-size=\'80\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3E🏫%3C/text%3E%3C/svg%3E'">
         </div>
-        <p>© 2026 Jardín Infantil San Nicolás - 35 años en Arica, Chile</p>
-        <p style="margin-top: 0.5rem;">Pje. Simón Molinares 3022 | Tel: (58) 221 8116</p>
-    </footer>
+        <div class="hero-float-card card-1">
+          <span class="fc-icon">⭐</span>
+          <div><span class="fc-label">Confianza de familias</span>+200 familias atendidas</div>
+        </div>
+        <div class="hero-float-card card-2">
+          <span class="fc-icon">🎨</span>
+          <div><span class="fc-label">Actividades lúdicas</span>Aprender jugando</div>
+        </div>
+        <div class="hero-float-card card-3">
+          <span class="fc-icon">💚</span>
+          <div><span class="fc-label">Inclusión real</span>NEE atendidas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Script para menú móvil y smooth scrolling -->
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.getElementById('nav-links');
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="trust-num">35+</div>
+      <div class="trust-label">Años de experiencia</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">200+</div>
+      <div class="trust-label">Familias que confían en nosotros</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">4</div>
+      <div class="trust-label">Niveles educativos</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">100%</div>
+      <div class="trust-label">Educación inclusiva</div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-num">8am</div>
+      <div class="trust-label">Apertura diaria</div>
+    </div>
+  </div>
+</div>
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+<!-- NOSOTROS -->
+<section class="nosotros" id="nosotros">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">🏡 Sobre Nosotros</span>
+      <h2 class="section-title">Un hogar lejos del <em>hogar</em></h2>
+      <p class="section-sub">Desde 1991, el Jardín Infantil San Nicolás ha sido el primer espacio de aprendizaje de cientos de niños en Arica.</p>
+    </div>
+    <div class="nosotros-grid">
+      <div class="reveal">
+        <p>Con <strong>más de 35 años de experiencia</strong> en Arica, somos un jardín infantil comprometido con el desarrollo integral de cada niño y niña. Creemos que los primeros años de vida son fundamentales para construir una base sólida de aprendizaje, afecto y valores.</p>
+        <p>Nuestro equipo de educadoras y técnicos en párvulos trabaja con amor y dedicación cada día para que tu hijo/a se sienta seguro, feliz y motivado a aprender.</p>
+        <div class="highlight-box">
+          💡 "Crecemos juntos en valores" — nuestra promesa a cada familia que nos elige.
+        </div>
+      </div>
+      <div class="value-cards reveal">
+        <div class="value-card">
+          <span class="vc-icon">💛</span>
+          <h4>Amor y dedicación</h4>
+          <p>Cada niño recibe atención personalizada y cariñosa.</p>
+        </div>
+        <div class="value-card">
+          <span class="vc-icon">🌈</span>
+          <h4>Inclusión y respeto</h4>
+          <p>Valoramos la diversidad y atendemos necesidades especiales.</p>
+        </div>
+        <div class="value-card">
+          <span class="vc-icon">🌱</span>
+          <h4>Desarrollo integral</h4>
+          <p>Fomentamos el crecimiento emocional, social y cognitivo.</p>
+        </div>
+        <div class="value-card">
+          <span class="vc-icon">👨‍👩‍👧</span>
+          <h4>Compromiso familiar</h4>
+          <p>Las familias son parte activa de nuestra comunidad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
-    </script>
+<!-- INCLUSIÓN ESPECIAL -->
+<div class="inclusion">
+  <div class="inclusion-inner">
+    <div class="inclusion-icon">♿</div>
+    <div>
+      <h2>Educación Inclusiva y Especializada</h2>
+      <p>Atendemos niños y niñas con <strong>necesidades educativas especiales</strong>, incluyendo trastornos motores. Contamos con infraestructura adaptada, salas de usos múltiples y talleres lúdicos diseñados para garantizar que todos puedan aprender y disfrutar plenamente.</p>
+      <div class="inclusion-tags">
+        <span class="inclusion-tag">🏃 Trastornos motores</span>
+        <span class="inclusion-tag">🧠 NEE</span>
+        <span class="inclusion-tag">🎭 Talleres lúdicos</span>
+        <span class="inclusion-tag">🏫 Salas adaptadas</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NIVELES -->
+<section class="niveles" id="niveles">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">🎓 Nuestros Niveles</span>
+      <h2 class="section-title">Un nivel para cada <em>etapa</em></h2>
+      <p class="section-sub">Desde los más pequeñitos hasta la preparación para la enseñanza básica. Cada nivel está diseñado con amor y método.</p>
+    </div>
+    <div class="niveles-grid">
+      <div class="nivel-card c1 reveal">
+        <span class="nivel-emoji">👶</span>
+        <h3>Medio Menor</h3>
+        <span class="nivel-edad">1 a 2 años</span>
+        <p>Descubrimiento del entorno y desarrollo de habilidades sociales básicas en un ambiente seguro y estimulante.</p>
+        <ul class="nivel-features">
+          <li>Juego exploratorio</li>
+          <li>Psicomotricidad</li>
+          <li>Primeros hábitos</li>
+        </ul>
+      </div>
+      <div class="nivel-card c2 reveal">
+        <span class="nivel-emoji">🧒</span>
+        <h3>Medio Mayor</h3>
+        <span class="nivel-edad">3 a 4 años</span>
+        <p>Fortalecimiento de la autonomía y desarrollo del lenguaje a través del juego simbólico y la expresión creativa.</p>
+        <ul class="nivel-features">
+          <li>Comunicación verbal</li>
+          <li>Expresión artística</li>
+          <li>Juego simbólico</li>
+        </ul>
+      </div>
+      <div class="nivel-card c3 reveal">
+        <span class="nivel-emoji">🎒</span>
+        <h3>Pre-Kínder y Kínder</h3>
+        <span class="nivel-edad">4 a 6 años</span>
+        <p>Preparación integral para la transición exitosa a la educación básica, con foco en habilidades académicas y sociales.</p>
+        <ul class="nivel-features">
+          <li>Lectoescritura inicial</li>
+          <li>Razonamiento matemático</li>
+          <li>Autonomía personal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALACIONES -->
+<section class="instalaciones" id="instalaciones">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">🏫 Instalaciones</span>
+      <h2 class="section-title">Espacios pensados para <em>ellos</em></h2>
+      <p class="section-sub">Ambientes seguros, coloridos y estimulantes donde los niños se sienten a gusto y aprenden mejor.</p>
+    </div>
+    <div class="inst-grid">
+      <div class="inst-card reveal">
+        <div class="inst-img">
+          <img src="https://jisanicolas.online/imagenes/entrada.jpg" alt="Entrada Principal" onerror="this.parentElement.style.background='linear-gradient(135deg,#FFD94A,#FF8C42)'; this.style.display='none'">
+        </div>
+        <div class="inst-info">
+          <h4>🚪 Entrada Principal</h4>
+          <p>Acceso seguro y amigable a nuestro jardín en Arica. Diseñado para recibir a cada familia con calidez.</p>
+        </div>
+      </div>
+      <div class="inst-card reveal">
+        <div class="inst-img">
+          <img src="https://jisanicolas.online/imagenes/aula.jpg" alt="Nuestras Aulas" onerror="this.parentElement.style.background='linear-gradient(135deg,#4ECDC4,#60A5FA)'; this.style.display='none'">
+        </div>
+        <div class="inst-info">
+          <h4>📚 Nuestras Aulas</h4>
+          <p>Espacios amplios y preparados pedagógicamente para potenciar el aprendizaje y la creatividad.</p>
+        </div>
+      </div>
+      <div class="inst-card reveal">
+        <div class="inst-img">
+          <img src="https://jisanicolas.online/imagenes/juegos.jpg" alt="Áreas de Juego" onerror="this.parentElement.style.background='linear-gradient(135deg,#95E06C,#4ECDC4)'; this.style.display='none'">
+        </div>
+        <div class="inst-info">
+          <h4>⛹️ Áreas de Juego</h4>
+          <p>Patio seguro y equipado para la recreación, el desarrollo motor y el juego libre en un ambiente protegido.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section class="ubicacion" id="ubicacion">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">📍 Cómo Llegar</span>
+      <h2 class="section-title">Visítanos en <em>Arica</em></h2>
+      <p class="section-sub">Estamos ubicados en un lugar accesible y seguro para todas las familias de Arica.</p>
+    </div>
+    <div class="ubicacion-grid">
+      <div class="reveal">
+        <div class="horario-card">
+          <h4>🕐 Horarios de Atención</h4>
+          <div class="horario-row"><span class="dia">Lunes</span><span class="hora">08:00 – 18:00 <span class="open-badge">Abierto</span></span></div>
+          <div class="horario-row"><span class="dia">Martes</span><span class="hora">08:00 – 18:00 <span class="open-badge">Abierto</span></span></div>
+          <div class="horario-row"><span class="dia">Miércoles</span><span class="hora">08:00 – 18:00 <span class="open-badge">Abierto</span></span></div>
+          <div class="horario-row"><span class="dia">Jueves</span><span class="hora">08:00 – 18:00 <span class="open-badge">Abierto</span></span></div>
+          <div class="horario-row"><span class="dia">Viernes</span><span class="hora">08:00 – 18:00 <span class="open-badge">Abierto</span></span></div>
+          <div class="horario-row"><span class="dia">Sábado</span><span class="hora"><span class="closed-badge">Cerrado</span></span></div>
+          <div class="horario-row"><span class="dia">Domingo</span><span class="hora"><span class="closed-badge">Cerrado</span></span></div>
+        </div>
+        <div class="dir-card">
+          <h4>📌 Información de Contacto</h4>
+          <div class="dir-item">
+            <span class="di-icon">📍</span>
+            <div><div class="di-label">Dirección</div><div class="di-val">Pje. Simón Molinares 3022, Arica, Chile</div></div>
+          </div>
+          <div class="dir-item">
+            <span class="di-icon">📞</span>
+            <div><div class="di-label">Teléfono</div><div class="di-val">(58) 221 8116</div></div>
+          </div>
+          <div class="dir-item">
+            <span class="di-icon">✉️</span>
+            <div><div class="di-label">Correo</div><div class="di-val">ji-sannicolas@hotmail.com</div></div>
+          </div>
+          <div class="dir-item">
+            <span class="di-icon">💬</span>
+            <div><div class="di-label">WhatsApp</div><div class="di-val">+56 58 221 8116</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="map-embed">
+          <iframe
+            src="https://maps.google.com/maps?q=Pje.+Sim%C3%B3n+Molinares+3022,+Arica,+Chile&output=embed"
+            allowfullscreen
+            loading="lazy"
+            title="Ubicación Jardín Infantil San Nicolás">
+          </iframe>
+        </div>
+        <div style="margin-top:1rem;">
+          <a href="https://maps.google.com/maps?q=Pje.+Simón+Molinares+3022,+Arica,+Chile" target="_blank" class="btn-primary" style="display:inline-flex;width:100%;justify-content:center;margin-top:0.5rem;">🗺️ Abrir en Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">✉️ Contáctanos</span>
+      <h2 class="section-title">¡Hablemos! Estamos para <em>ayudarte</em></h2>
+      <p class="section-sub">¿Tienes preguntas sobre niveles, matrículas o necesidades especiales? Contáctanos y te respondemos a la brevedad.</p>
+    </div>
+    <div class="contacto-grid">
+      <div class="reveal">
+        <div class="contact-channels">
+          <a href="https://wa.me/56582218116?text=Hola!%20Quisiera%20información%20sobre%20el%20Jardín%20Infantil%20San%20Nicolás." target="_blank" class="channel-btn">
+            <div class="channel-icon ch-green">💬</div>
+            <div class="channel-text">
+              <div class="ch-label">WhatsApp (respuesta rápida)</div>
+              <div class="ch-val">+56 58 221 8116</div>
+            </div>
+          </a>
+          <a href="tel:+56582218116" class="channel-btn">
+            <div class="channel-icon ch-blue">📞</div>
+            <div class="channel-text">
+              <div class="ch-label">Llámanos directamente</div>
+              <div class="ch-val">(58) 221 8116</div>
+            </div>
+          </a>
+          <a href="mailto:ji-sannicolas@hotmail.com" class="channel-btn">
+            <div class="channel-icon ch-pink">✉️</div>
+            <div class="channel-text">
+              <div class="ch-label">Correo electrónico</div>
+              <div class="ch-val">ji-sannicolas@hotmail.com</div>
+            </div>
+          </a>
+        </div>
+        <div style="margin-top:2rem;background:linear-gradient(135deg,#FFF9E0,#FFECB3);border-radius:20px;padding:1.5rem;border-left:5px solid var(--amarillo);">
+          <p style="font-weight:800;color:#7c5c00;font-size:0.9rem;">⏰ Horario de atención telefónica</p>
+          <p style="font-size:0.85rem;color:#a07830;margin-top:0.3rem;font-weight:600;">Lunes a Viernes, 08:00 – 18:00 horas</p>
+        </div>
+      </div>
+      <div class="form-card reveal">
+        <h3>📝 Envíanos un mensaje</h3>
+        <div id="contact-form">
+          <div class="form-group">
+            <label>Nombre completo *</label>
+            <input type="text" id="f-nombre" placeholder="Ej: María González" required>
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico *</label>
+            <input type="email" id="f-email" placeholder="tu@correo.com" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono de contacto</label>
+            <input type="tel" id="f-tel" placeholder="+56 9 XXXX XXXX">
+          </div>
+          <div class="form-group">
+            <label>Asunto</label>
+            <select id="f-asunto">
+              <option value="">Selecciona un tema...</option>
+              <option>Matrículas e inscripciones</option>
+              <option>Información sobre niveles</option>
+              <option>Necesidades educativas especiales</option>
+              <option>Horarios y aranceles</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>¿En qué podemos ayudarte?</label>
+            <textarea id="f-mensaje" placeholder="Cuéntanos sobre tu consulta..."></textarea>
+          </div>
+          <button class="btn-form" onclick="enviarFormulario()">💌 Enviar mensaje</button>
+        </div>
+        <div class="form-success" id="form-success">
+          ✅ ¡Mensaje enviado! Te contactaremos a la brevedad. Mientras tanto, puedes escribirnos por WhatsApp para una respuesta más rápida.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="footer-logo" href="#inicio">
+          <img src="https://jisanicolas.online/imagenes/logo.png" alt="Logo" onerror="this.style.display='none'">
+          <div class="footer-logo-text">San Nicolás<span>Jardín Infantil · Arica, Chile</span></div>
+        </a>
+        <p class="footer-desc">35 años formando a los niños y niñas de Arica con amor, valores y dedicación. Un espacio donde cada pequeño puede crecer a su ritmo.</p>
+        <div style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;">
+          <span class="footer-badge fb-green">✅ Educación inclusiva</span>
+          <span class="footer-badge fb-blue">🏅 35 años</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="#nosotros">Sobre Nosotros</a></li>
+          <li><a href="#niveles">Niveles Educativos</a></li>
+          <li><a href="#instalaciones">Instalaciones</a></li>
+          <li><a href="#ubicacion">Cómo Llegar</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <p>📍 Pje. Simón Molinares 3022, Arica</p>
+        <br>
+        <p>📞 (58) 221 8116</p>
+        <br>
+        <p>✉️ ji-sannicolas@hotmail.com</p>
+        <br>
+        <p>🕐 Lunes–Viernes 08:00–18:00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Jardín Infantil San Nicolás · Arica, Chile. Todos los derechos reservados.</p>
+      <p class="footer-credits">Página hecha por <a href="https://www.instagram.com/ju4n_rpf.cll" target="_blank">@ju4n_rpf.cll</a> ❤️</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if(entry.isIntersecting){
+        setTimeout(()=>{ entry.target.classList.add('visible'); }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Form
+  function enviarFormulario(){
+    const nombre = document.getElementById('f-nombre').value;
+    const email = document.getElementById('f-email').value;
+    if(!nombre || !email){ alert('Por favor, completa al menos tu nombre y correo electrónico.'); return; }
+    document.getElementById('contact-form').style.display='none';
+    document.getElementById('form-success').style.display='block';
+  }
+
+  // Nav active
+  window.addEventListener('scroll', ()=>{
+    const nav = document.querySelector('nav');
+    if(window.scrollY > 20){ nav.style.boxShadow='0 4px 24px rgba(0,0,0,0.12)'; }
+    else { nav.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'; }
+  });
+</script>
 </body>
 </html>
